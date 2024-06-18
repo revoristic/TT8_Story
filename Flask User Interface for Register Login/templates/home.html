@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .centered-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+    </style>
+</head>
+<body>
+    {% if message %}
+    <div class="alert alert-info">{{ message }}</div>
+    {% endif %}
+    <div class="centered-image">
+        <img src="https://toppng.com/uploads/preview/kaboom-expression-comic-stickers-pop-art-11642582207imn3yjsjcd.png" style="width: 400px;">
+    </div>    
+    <br>
+    <div class="container">
+        <div class="col-md-offset-15 col-md-13">
+            <h2 class="page-header text-primary text-center"><span class="fa fa-image"> KAB00M</span></h2>
+            <div class="form-group">
+                <form action="{{ url_for('login') }}" method="get">
+                    <input type="submit" value="Login" class="btn btn-primary btn-block">
+                </form>
+            </div>
+            <div class="form-group">
+                <form action="{{ url_for('register') }}" method="get">
+                    <input type="submit" value="Register" class="btn btn-info btn-block">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

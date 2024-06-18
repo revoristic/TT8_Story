@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecturer Forum</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='lecturer.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="nav-items">
+            <a href='/lecturer'>Lecturer Page</a>
+            <a href="/">Logout</a>
+      </nav>
+
+    <h1>Welcome to Lecturer Forum Page</h1>
+    <h2>Help Students</h2>
+
+    {% for question in questions %}
+        <div class="question-container">
+            <strong>{{ question.email }}</strong> asked: 
+            <h3>{{ question.question }}</h3>
+            <p>{{ question.description }}</p>
+            
+            <form method="POST" action="{{ url_for('lecturerforum') }}">
+                {{ form.hidden_tag() }}
+                <div>
+                    {{ form.comment.label }} 
+                    {{ form.comment(class_="input") }}
+                </div>
+                <input type="hidden" name="question_id" value="{{ question.id }}">
+                <div>
+                    {{ form.submit(class_="submitbtn") }}
+                </div>
+            </form>
+            
+            <h4>Comments:</h4>
+            <ul>
+                {% for comment in question.comments %}
+                    <li>{{ comment.email }} commented: {{ comment.comment }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+</body>
+</html>

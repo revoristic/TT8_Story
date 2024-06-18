@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='page.css') }}">
+    <title>Student Dashboard</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">KAB00M!</div>
+      <div class="nav-items">
+        <a href="/">Home</a>
+        <a href='/studentforum'>StudentForum</a>
+       
+      </div>
+    </nav>
+    <section class="hero">
+      <div class="hero-container">
+        <div class="column-left">
+          <h1>Welcome Student!</h1>
+          <p>
+            Choose a subject that interests you.
+          </p>
+        </div>
+        <div class="column-right">
+          <div class="button-container">
+            <a href="{{ url_for('quiz') }}"> <button>Principle of physics</button></a>
+            <a href="{{ url_for('CTquiz')}}"> <button>Critical Thinking</button></a>
+            <a href="{{ url_for('Englishquiz')}}"> <button>English</button></a>
+           
+            
+            
+            
+            
+          </div>
+    </section>
+  </body>
+</html>

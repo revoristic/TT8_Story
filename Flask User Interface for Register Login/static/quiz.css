@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+nav {
+    height: 80px;
+    background: #5c8abc5c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.nav-items a {
+    text-decoration: none;
+    color: #000;
+    margin: 0 15px;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-items a:hover {
+    color: #fff;
+}
+
+#page-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#quiz-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.mcq-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s, border 0.3s;
+}
+
+.option:hover {
+    background: #eef;
+    border-color: #cdd;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#submit-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#prev-btn, #next-btn {
+    position: fixed;
+    bottom: 20px;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+#prev-btn:hover, #next-btn:hover {
+    background-color: #45a049;
+}
+
+#prev-btn {
+    left: 20px;
+}
+
+#next-btn {
+    right: 20px;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    transition-delay: 0.5s;
+}
