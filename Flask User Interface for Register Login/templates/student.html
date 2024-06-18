@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <nav>
+      <div class="logo">KAB00M!</div>
+      <div class="nav-items">
+        <a href="/">Logout</a>
+        <a href='/studentforum'>StudentForum</a>
+      </div>
+    </nav>
+    <section class="hero">
+      <div class="hero-container">
+        <div class="column-left">
+          <h1>Welcome!</h1>
+          <p>
+            As an student you can now play quizzes with KAB00M!
+          </p>
+          <form method="post" action="{{ url_for('page') }}"><button>Play Quiz</button></form>
+        </div>
+        <div class="column-right">
+            <img src="{{ url_for('static', filename='bomb.svg') }}" alt="illustration" class="hero-image" />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

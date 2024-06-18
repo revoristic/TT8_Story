@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+  <title>Login Page for Kab00M</title>
+</head>
+<body>
+  <nav>
+    <div class="nav-items">
+      <a href="/">Logout</a>
+    </div>
+  </nav>
+  <form method="post" action="{{ url_for('login') }}">
+    <div class="container">
+      <h1 style="text-align: center;">Login</h1>
+
+      {% if message %}
+        <div class="alert alert-info">{{ message }}</div>
+      {% endif %}
+      
+      <hr>
+
+      <label for="username_email"><b>Username or Email Address</b></label>
+      <input type="text" placeholder="Enter Username or Email Address" name="username_email" id="username_email" value="{{ request.form.username }}" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+      <hr>
+
+      <button type="submit" class="loginbtn">Login</button>
+
+      <div class="container login page">
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+      </div>
+    </div>
+  </form>
+</body>
+</html>

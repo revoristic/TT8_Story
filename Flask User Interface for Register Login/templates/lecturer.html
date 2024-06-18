@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecturer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <nav>
+      <div class="logo">KAB00M!</div>
+      <div class="nav-items">
+        <a href="/">Logout</a>
+        <a href='/lecturerforum'>LecturerForum</a>
+      </div>
+    </nav>
+    <section class="hero">
+      <div class="hero-container">
+        <div class="column-left">
+          <h1>Welcome!</h1>
+          <p>
+             As an lecturer you can create quizzes for your students now with KAB00M!
+          </p>
+          <a href="{{ url_for('admin') }}"> <button>CREATE Physics QUIZ</button></a>
+          <a href="{{ url_for('CTadd') }}"> <button>CREATE CT QUIZ</button></a>
+          <a href="{{ url_for('Englishadd') }}"> <button>CREATE English QUIZ</button></a>
+
+
+          
+        </div>
+        <div class="column-right">
+          <img src="{{ url_for('static', filename='bomb.svg') }}" alt="illustration" class="hero-image" />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

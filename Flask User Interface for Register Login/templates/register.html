@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+  <title>Register Page for Kab00M</title>
+</head>
+<body>
+  <nav>
+    <div class="nav-items">
+      <a href="/">Logout</a>
+    </div>
+  </nav>
+  <form method="post" action="{{ url_for('register') }}">
+    <div class="container">
+      <h1 style="text-align: center;">Register</h1>
+      
+      {% if message %}
+        <div class="alert alert-info">{{ message }}</div>
+      {% endif %}
+      
+      <hr>
+
+      <label for="email"><b>Email Address</b></label>
+      <input type="text" placeholder="Enter Email" name="email" id="email" value="{{ request.form.email }}" required>
+
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" id="username" value="{{ request.form.username }}" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+      <label for="psw-reconfirm"><b>Reconfirm Password</b></label>
+      <input type="password" placeholder="Reconfirm Password" name="psw-reconfirm" id="psw-reconfirm" required>
+      <hr>
+
+      <button type="submit" class="registerbtn">Register</button>
+      <!--<p>After registering, you will be redirected to the Login Page</p>-->
+
+      <div class="container register page">
+        <p>Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+      </div>
+    </div>
+  </form>
+</body>
+</html>

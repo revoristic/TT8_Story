@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help Forum </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='help_forum.css') }}">
+</head>
+<body>
+    <h1>Help Forum Page</h1>
+    <h2>Answers</h2>
+    <div class="container">
+        <p><strong>{{ question.email }}</strong> asked:</p>
+        <h3>{{ question.question }}</h3>
+        <p>{{ question.description }}</p>
+
+        <h4>Comments</h4>
+        <ul>
+            {% for comment in comments %}
+                <li>{{ comment.email }} commented: {{ comment.comment }}</li>
+            {% endfor %}
+        </ul>
+
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.comment.label }} 
+                {{ form.comment(class_="input") }}
+            </div>
+            <div>
+                {{ form.submit(class_="helpbtn") }}
+            </div>
+        </form>
+    </div>
+</body>
+</html>

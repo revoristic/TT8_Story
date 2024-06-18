@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Question Forum</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='student.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="nav-items">
+             <a href='/student'>Student Page</a>
+             <a href="/">Logout</a>
+    </nav>
+    <h1>Welcome to Student Forum Page</h1>
+    <h2>Ask a Question</h2>
+    
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        
+        <div>
+         <p>{{ form.question.label }} {{ form.question }}</p>
+        </div>
+        <div>
+            <p>{{ form.description.label }} {{ form.description }}</p>
+        </div>
+        <div>
+            {{ form.submit }}
+        </div>
+    </form>
+
+    <h2>Your Questions</h2>
+    <ul>
+        {% for question in questions %}
+            <li>
+                <strong>{{ question.email }}</strong> asked: <strong>{{ question.question }}</strong>
+                <p>{{ question.description }}</p>
+                <a href="{{ url_for('help_forum', question_id=question.id) }}">View Comments</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

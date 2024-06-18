@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Add English Questions</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+</head>
+<body>
+  <h1>Add New English Question</h1>
+  <form id="question-form">
+    <div>
+      <label for="question-type">Question Type:</label>
+      <select id="question-type" name="questionType" required>
+        <option value="mcq">MCQ</option>
+        <option value="subjective">Subjective</option>
+      </select>
+    </div>
+    <div>
+      <label for="question">Question:</label>
+      <input type="text" id="question" name="question" required>
+    </div>
+    <div id="mcq-options-container">
+      <label for="options">Options (comma-separated, mark correct option with *):</label>
+      <input type="text" id="options" name="options" required>
+    </div>
+    <div id="subjective-answer-container" style="display: none;">
+      <label for="subjective-answer">Correct Answer:</label>
+      <textarea id="subjective-answer" name="subjectiveAnswer"></textarea>
+    </div>
+    <button type="submit">Add Question</button>
+  </form>
+  
+  <script>
+    document.getElementById('question-type').addEventListener('change', function() {
+      const selectedType = this.value;
+      const mcqOptionsContainer = document.getElementById('mcq-options-container');
+      const subjectiveAnswerContainer = document.getElementById('subjective-answer-container');
+      
+      if (selectedType === 'mcq') {
+        mcqOptionsContainer.style.display = 'block';
+        subjectiveAnswerContainer.style.display = 'none';
+        document.getElementById('options').required = true;
+        document.getElementById('subjective-answer').required = false;
+      } else {
+        mcqOptionsContainer.style.display = 'none';
+        subjectiveAnswerContainer.style.display = 'block';
+        document.getElementById('options').required = false;
+        document.getElementById('subjective-answer').required = true;
+      }
+    });
+
+    document.getElementById('question-form').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const questionType = document.getElementById('question-type').value;
+      const question = document.getElementById('question').value;
+      const options = document.getElementById('options').value;
+      const subjectiveAnswer = document.getElementById('subjective-answer').value;
+
+      const payload = { questionType, question };
+      if (questionType === 'mcq') {
+        payload.options = options;
+      } else if (questionType === 'subjective') {
+        payload.subjectiveAnswer = subjectiveAnswer;
+      }
+
+      const response = await fetch('/add-english-question', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        alert('English Question added successfully!');
+        document.getElementById('question-form').reset();
+      } else {
+        alert('Failed to add English question.');
+      }
+    });
+  </script>
+</body>
+</html>
